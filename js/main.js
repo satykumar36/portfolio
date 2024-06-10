@@ -172,27 +172,91 @@
 		});
 	};
 	scrollWindow();
-	var counter = function() {
-		$('.number').each(function() {
+
+
+ 
+ $('.counter-wrap').waypoint(function(direction) {
+	if (direction === 'down') {
+		// For each element with class "number" within the ".counter-wrap" container
+		$('.counter-wrap .number').each(function() {
 			var $this = $(this);
-			var targetNumber = parseInt($this.data('number'));
-			$this.text(targetNumber.toLocaleString() + '+');
-	
+			var targetNumber = parseInt($this.data('number')); // Get the target number from the data attribute
+			$this.text(targetNumber.toLocaleString() + '+'); // Display the target number with a "+" sign
+
+			// Animate the counter from 0 to the target number
 			$({ Counter: 0 }).animate({ Counter: targetNumber }, {
-				duration: 7000,
-				easing: 'swing',
+				duration: 2000, // Duration of animation (in milliseconds)
+				easing: 'swing', // Easing function
 				step: function() {
-					$this.text(Math.ceil(this.Counter).toLocaleString() + '+');
+					$this.text(Math.ceil(this.Counter).toLocaleString() + '+'); // Update the text with the current counter value
 				}
 			});
 		});
 	}
+}, { offset: '95%' }); 
+
+
+	// var counter = function() {
+	// 	$('.number').each(function() {
+	// 		var $this = $(this);
+	// 		var targetNumber = parseInt($this.data('number'));
+	// 		$this.text(targetNumber.toLocaleString() + '+');
 	
-	counter();
+	// 		$({ Counter: 0 }).animate({ Counter: targetNumber }, {
+	// 			duration: 7000,
+	// 			easing: 'swing',
+	// 			step: function() {
+	// 				$this.text(Math.ceil(this.Counter).toLocaleString() + '+');
+	// 			}
+	// 		});
+	// 	});
+	// }
 	
+	// counter();
 	
+	// var counter = function() {
+		
+	// 	$('#section-counter, .hero-wrap, .ftco-counter, .ftco-about').waypoint( function( direction ) {
+
+	// 		if( direction === 'down' && !$(this.element).hasClass('ftco-animated') ) {
+
+	// 			var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',')
+	// 			$('.number').each(function(){
+	// 				var $this = $(this),
+	// 					num = $this.data('number');
+	// 					console.log(num);
+	// 				$this.animateNumber(
+	// 				  {
+	// 				    number: num,
+	// 				    numberStep: comma_separator_number_step
+	// 				  }, 7000
+	// 				);
+	// 			});
+				
+	// 		}
+
+	// 	} , { offset: '95%' } );
+
+	// }
+	// counter();
 	
-	
+    $('.ftco-counter').waypoint(function(direction) {
+        if (direction === 'down') {
+            $('.number').each(function() {
+                var $this = $(this);
+                var targetNumber = parseInt($this.data('number'));
+                $this.text(targetNumber.toLocaleString() + '+');
+
+                $({ Counter: 0 }).animate({ Counter: targetNumber }, {
+                    duration: 7000,
+                    easing: 'swing',
+                    step: function() {
+                        $this.text(Math.ceil(this.Counter).toLocaleString() + '+');
+                    }
+                });
+            });
+        }
+    }, { offset: '95%' });
 	
 	
 	

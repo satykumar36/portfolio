@@ -111,22 +111,21 @@
 
 	$('nav .dropdown').hover(function(){
 		var $this = $(this);
-		// 	 timer;
-		// clearTimeout(timer);
 		$this.addClass('show');
 		$this.find('> a').attr('aria-expanded', true);
-		// $this.find('.dropdown-menu').addClass('animated-fast fadeInUp show');
 		$this.find('.dropdown-menu').addClass('show');
 	}, function(){
 		var $this = $(this);
-			// timer;
-		// timer = setTimeout(function(){
-			$this.removeClass('show');
-			$this.find('> a').attr('aria-expanded', false);
-			// $this.find('.dropdown-menu').removeClass('animated-fast fadeInUp show');
-			$this.find('.dropdown-menu').removeClass('show');
-		// }, 100);
+		$this.removeClass('show');
+		$this.find('> a').attr('aria-expanded', false);
+		$this.find('.dropdown-menu').removeClass('show');
 	});
+
+
+	$('.nav-item').on('click', function() { // Listen for click events on nav items
+        $('.navbar-collapse').collapse('hide'); // Hide the collapsed navbar when a nav item is clicked
+    });
+
 
 
 	$('#dropdown04').on('show.bs.dropdown', function () {
